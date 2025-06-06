@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="icon" href="image/showa.jpg" type="image/png">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kiffish</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+  <link rel="stylesheet" href="home.css" />
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .products {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .box-container {
+       display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: center;
+  max-width: 1700px;
+  margin: 0 auto;
+    }
+
+    .box {
+      position: relative;
+      top: 40px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .img-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-wrapper img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .img-wrapper:hover img {
+      transform: scale(1.2);
+    }
+
+    .description-hover {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 20px;
+      font-size: 16px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease, bottom 0.3s ease;
+    }
+
+    .img-wrapper:hover .description-hover {
+      opacity: 1;
+      bottom: 0;
+    }
+
+    .name,
+    .price {
+      text-align: center;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .name {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .price {
+      font-size: 16px;
+    }
+
+    .btn {
+      color: white;
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+      background: rgb(44, 101, 187);
+      border: 1px solid #ddd;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #eee;
+    }
+
+  </style>
+</head>
+<body style="margin-top: 6rem;">
+  <header>
+    <div class="logo"><img src="image/logo.png" alt="Kiffish Logo"></div>
+    <nav class="menu">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="LiveFish.html">Live Fish</a></li>
+        <li><a href="FishAcc.html" style="color: #ffd700;">Fish Accessories</a></li>
+        <li><a href="Community.html">Community</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="cart.html"><img src="image/c2.png" alt="Cart"></a>
+      <a href="#" id="user-btn"><img src="image/u2.png" alt="User"></a>
+    </div>
+
+     <!-- Login Popup Form -->
+    <div class="login-popup" id="login-popup">
+        <div class="login-form">
+            <span class="close-btn">&times;</span>
+            <h2>Login</h2>
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-options">
+                    <label><input type="checkbox" name="remember"> Remember me</label>
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                <div class="register-link">
+                    Don't have an account? <a href="#" id="show-register">Register here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Registration Popup Form -->
+    <div class="register-popup" id="register-popup">
+        <div class="register-form">
+            <span class="close-btn">&times;</span>
+            <h2>Create Account</h2>
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="reg-username">Username</label>
+                    <input type="text" id="reg-username" name="username" placeholder="Choose a username" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" name="password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-confirm-password">Confirm Password</label>
+                    <input type="password" id="reg-confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="register-btn">Register</button>
+                <div class="login-link">
+                    Already have an account? <a href="#" id="show-login">Login here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+  </header>
+
+  <section class="products">
+    <h1 class="title">Available Products</h1>
+    <div class="box-container" id="product-list"></div>
+  </section>
+
+  <script>
+    const products = [
+      { id: 1, name: "Air Pump", price: 350, image: "image/air pump.png", description: "From: BettaLoversPH<br>(24 available)" },
+      { id: 2, name: "Aqua Light", price: 300, image: "image/aqualight.png", description: "From: FishWorld<br>(15 available)" },
+      { id: 3, name: "Breeding Box", price: 280, image: "image/box.png", description: "From: AquaMart<br>(30 available)" },
+      { id: 4, name: "Cleaner", price: 500, image: "image/cleaner.png", description: "From: FancyFishShop<br>(10 available)" },
+      { id: 5, name: "Declorinator", price: 450, image: "image/conditioner.png", description: "From: BettaHeaven<br>(8 available)" },
+      { id: 6, name: "Water Fist Tank Filter", price: 400, image: "image/filter.png", description: "From: PetZone<br>(20 available)" },
+      { id: 7, name: "Aqua Soil", price: 520, image: "image/gravel.png", description: "From: FishParlor<br>(6 available)" },
+      { id: 8, name: "Hood top for aquarium", price: 600, image: "image/hood.png", description: "From: AquaKingdom<br>(12 available)" },
+      { id: 9, name: "Ph level test strips", price: 700, image: "image/kit.png", description: "From: BettaRare<br>(4 available)" },
+      { id: 10, name: "Fish Net for aquarium", price: 250, image: "image/net.png", description: "From: PetLovers<br>(18 available)" },
+      { id: 11, name: "Algae Scraper", price: 270, image: "image/scrape.png", description: "From: AquaBettaPH<br>(25 available)" },
+      { id: 12, name: "decorative stones", price: 550, image: "image/deco.png", description: "From: FinTastic<br>(7 available)" },
+    ];
+
+    function renderProducts() {
+      const container = document.getElementById("product-list");
+      container.innerHTML = products
+        .map(product => `
+          <div class="box">
+            <div class="img-wrapper">
+              <img src="${product.image}" alt="${product.name}">
+              <div class="description-hover">${product.description}</div>
+            </div>
+            <div class="name">${product.name}</div>
+            <div class="price">₱${product.price}</div>
+            <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
+          </div>
+        `).join("");
+    }
+
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${product.name} added to cart.`);
+    }
+
+    renderProducts();
+  </script>
+
+  <div class="footer-wrapper">
+    <img src="image/blue.png" alt="Wave" class="footer-bg">
+    <div class="footer-text">
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a><br>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="social-media-icons">
+        <a href="#"><img src="image/fb.png" alt="Facebook"></a>
+        <a href="#"><img src="image/ig.png" alt="Instagram"></a>
+        <a href="#"><img src="image/tw.png" alt="Twitter"></a>
+      </div>
+      <p>&copy; 2025 Kiffish. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>

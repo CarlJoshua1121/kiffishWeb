@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="icon" href="image/showa.jpg" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kiffish - Live Fish</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+  <link rel="stylesheet" href="home.css" />
+  <style>
+   /* Full-screen video adjustments */
+.img-wrapper video {
+  width: 100%;
+  height: 220PX;
+  object-fit: cover; /* Prevent black bars */
+  border-radius: 8px;
+  display: block;
+}
+
+/* Box container for 4 columns x 3 rows layout */
+.box-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: center;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+/* Individual box styling */
+.box {
+   position: relative;
+   top: 70px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 400px; /* Set max width for each card */
+  height: 330px; /* Make cards a bit larger in height */
+}
+
+.img-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+/* Description styling */
+.description-hover {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 16px;
+  display: none;
+}
+
+.img-wrapper:hover .description-hover {
+  display: block;
+}
+
+/* Other existing styles remain unchanged */
+.name {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  font-weight: bold;
+}
+.price {
+  color: black;
+  font-size: 2rem;
+}
+.btn {
+  display: inline-block;
+  background-color: #ffd700;
+  color: #000;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 100px;
+}
+
+.btn:hover {
+  background-color: #e6c200;
+}
+
+  </style>
+</head>
+<body style="margin-top: 6rem;">
+  <header>
+    <div class="logo"><img src="image/logo.png" alt="Kiffish Logo"></div>
+    <nav class="menu">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="LiveFish.html" style="color: #ffd700;">Live Fish</a></li>
+        <li><a href="FishAcc.html">Fish Accessories</a></li>
+        <li><a href="Community.html">Community</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="cart.html"><img src="image/c2.png" alt="Cart"></a>
+      <a href="#" id="user-btn"><img src="image/u2.png" alt="User"></a>
+    </div>
+  </header>
+
+  <section class="products">
+    <h1 class="title">Live Fish for Sale</h1>
+    <div class="box-container" id="product-list"></div>
+  </section>
+
+ <script>
+  const liveFish = [
+    { id: 101, name: "Halfmoon Betta Fish", price: 350, video: "vid/betta1.mp4", description: "From: BettaWorld<br>(15 available)" },
+    { id: 102, name: "Fantail Goldfish", price: 250, video: "vid/goldfish.mp4", description: "From: GuppyGrove<br>(20 available)" },
+    { id: 103, name: "Fancy Guppy Pair", price: 180, video: "vid/guppy.mp4", description: "From: GoldieFarm<br>(12 available)" },
+    { id: 104, name: "Silver Angelfish", price: 400, video: "vid/angelfish.mp4", description: "From: TetraTown<br>(18 available)" },
+    { id: 105, name: "Red Discus Fish", price: 1200, video: "vid/discus.mp4", description: "From: MollyMarket<br>(22 available)" },
+    { id: 106, name: "Clownfish Pair", price: 2500, video: "vid/clownfish.mp4", description: "From: TetraTown<br>(18 available)" },
+    { id: 107, name: "Tiger Oscar", price: 900, video: "vid/oscar.mp4", description: "From: TetraTown<br>(18 available)" },
+    { id: 108, name: "Albino Plecostomus", price: 350, video: "vid/pleco.mp4", description: "From: TetraTown<br>(18 available)" },
+    { id: 109, name: "Japanese Koi Fish", price: 1500, video: "vid/koi.mp4", description: "From: TetraTown<br>(18 available)" },
+    { id: 110, name: "Black Molly", price: 200, video: "vid/molly.mp4", description: "From: TetraTown<br>(18 available)" },
+    { id: 111, name: "Neon Tetra (Pack of 5)", price: 300, video: "vid/neon.mp4", description: "From: TetraTown<br>(18 available)" },
+    { id: 112, name: "Glow Fish", price: 50, video: "vid/glowfish.mp4", description: "From: TetraTown<br>(18 available)" }
+  ];
+
+  function renderProducts() {
+    const container = document.getElementById("product-list");
+    container.innerHTML = liveFish
+      .map(product => `
+        <div class="box">
+          <div class="img-wrapper">
+            <video src="${product.video}" autoplay loop muted playsinline></video>
+            <div class="description-hover">${product.description}</div>
+          </div>
+          <div class="name">${product.name}</div>
+          <div class="price">₱${product.price}</div>
+          <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
+        </div>
+      `).join("");
+  }
+
+  function addToCart(productId) {
+    const product = liveFish.find(p => p.id === productId);
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existing = cart.find(item => item.id === productId);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${product.name} added to cart.`);
+  }
+
+  renderProducts();
+</script>
+
+  <div class="footer-wrapper">
+    <img src="image/blue.png" alt="Wave" class="footer-bg">
+    <div class="footer-text">
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a><br>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="social-media-icons">
+        <a href="#"><img src="image/fb.png" alt="Facebook"></a>
+        <a href="#"><img src="image/ig.png" alt="Instagram"></a>
+        <a href="#"><img src="image/tw.png" alt="Twitter"></a>
+      </div>
+      <p>&copy; 2025 Kiffish. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>

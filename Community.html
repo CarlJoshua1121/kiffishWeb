@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="image/showa.jpg" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiffish Community</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="comm.css"> <!-- Using the same CSS as home page -->
+    <style>
+        .comment {
+            position: relative;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .delete-comment-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: #888;
+            cursor: pointer;
+        }
+
+        .delete-comment-btn:hover {
+            color: red;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            cursor: pointer;
+        }
+
+        .post {
+            margin-bottom: 20px;
+        }
+
+        .post-content img {
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="image/logo.png" alt="Kiffish Logo">
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="Livefish.html">Live Fish</a></li>
+                <li><a href="FishAcc.html">Fish Accessories</a></li>
+                <li><a href="Community.html" style="color: #ffd700;">Community</a></li>
+            </ul>
+        </nav>
+        <div class="icons">
+            <a href="cart.html"><img src="image/c2.png" alt="Cart"></a>
+            <a href="#" id="user-btn"><img src="image/u2.png" alt="User"></a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Post Form -->
+        <div class="post-form">
+            <h3>Create a Post</h3>
+            <textarea id="postContent" placeholder="What's on your mind about fishkeeping?"></textarea>
+            <input type="file" id="postImage" accept="image/*" style="margin-bottom: 10px; display: block;">
+            <button id="postBtn">Post</button>
+        </div>
+
+        <!-- Posts Container -->
+        <div id="postsContainer">
+            <!-- Example post for aesthetics (retained even after page refresh) -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-avatar">JD</div>
+                    <div>
+                        <span class="post-user">John Doe</span>
+                        <span class="post-time">2 hours ago</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>Just set up my new 50-gallon aquarium! Any suggestions for compatible freshwater fish?</p>
+                    <img src="/image/hood.png" alt="Aquarium">
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn" data-post="0">
+                        <i class="far fa-thumbs-up"></i>
+                        <span>Like</span>
+                        <span class="like-count">12</span>
+                    </div>
+                    <div class="action-btn comment-btn">
+                        <i class="far fa-comment"></i>
+                        <span>Comment</span>
+                    </div>
+                    <div class="action-btn share-btn">
+                        <i class="fas fa-share"></i>
+                        <span>Share</span>
+                    </div>
+                    <button class="delete-post-btn" data-post="0">Delete Post</button>
+                </div>
+                <div class="comments">
+                    <div class="comment">
+                        <button class="delete-comment-btn" data-post="0" data-comment="0">X</button>
+                        <p>Looks amazing! I have a similar setup. Try adding some tetras!</p>
+                    </div>
+                    <div class="comment-form">
+                        <input type="text" placeholder="Write a comment..." class="comment-input" data-post="0">
+                        <button class="comment-btn" data-post="0">Comment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize posts with example data (for aesthetics)
+        let posts = [
+            {
+                username: "John Doe",
+                content: "Just set up my new 50-gallon aquarium! Any suggestions for compatible freshwater fish?",
+                image: "/image/hood.png",
+                time: "2 hours ago",
+                likes: 12,
+                comments: ["Looks amazing! I have a similar setup. Try adding some tetras!"]
+            }
+        ];
+
+        // Function to render posts and comments
+        function renderPosts() {
+            const postsContainer = document.getElementById('postsContainer');
+            postsContainer.innerHTML = ''; // Clear the container before adding posts
+
+            posts.forEach((post, postIndex) => {
+                const postDiv = document.createElement('div');
+                postDiv.classList.add('post');
+                postDiv.innerHTML = `
+                    <div class="post-header">
+                        <div class="post-avatar">${post.username.charAt(0)}</div>
+                        <div>
+                            <span class="post-user">${post.username}</span>
+                            <span class="post-time">${post.time}</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>${post.content}</p>
+                        ${post.image ? `<img src="${post.image}" class="post-image" alt="Aquarium Setup">` : ''}
+                    </div>
+                    <div class="post-actions">
+                        <div class="action-btn like-btn" data-post="${postIndex}">
+                            <i class="far fa-thumbs-up"></i>
+                            <span>Like</span>
+                            <span class="like-count">${post.likes}</span>
+                        </div>
+                        <div class="action-btn comment-btn">
+                            <i class="far fa-comment"></i>
+                            <span>Comment</span>
+                        </div>
+                        <div class="action-btn share-btn">
+                            <i class="fas fa-share"></i>
+                            <span>Share</span>
+                        </div>
+                        <button class="delete-post-btn" data-post="${postIndex}">Delete Post</button>
+                    </div>
+                    <div class="comments">
+                        ${post.comments.map((comment, commentIndex) => `
+                            <div class="comment">
+                                <button class="delete-comment-btn" data-post="${postIndex}" data-comment="${commentIndex}">X</button>
+                                <p>${comment}</p>
+                            </div>
+                        `).join('')}
+                        <div class="comment-form">
+                            <input type="text" placeholder="Write a comment..." class="comment-input" data-post="${postIndex}">
+                            <button class="comment-btn" data-post="${postIndex}">Comment</button>
+                        </div>
+                    </div>
+                `;
+                postsContainer.appendChild(postDiv);
+            });
+        }
+
+        // Handle post creation
+        document.getElementById('postBtn').addEventListener('click', function () {
+            const postContent = document.getElementById('postContent').value;
+            const postImage = document.getElementById('postImage').files[0];
+            const imageUrl = postImage ? URL.createObjectURL(postImage) : null;
+
+            if (postContent.trim() === '') return;
+
+            const newPost = {
+                username: "New User",  // Replace with actual logged-in user's info
+                content: postContent,
+                image: imageUrl,
+                time: "Just now",
+                likes: 0,
+                comments: []
+            };
+
+            posts.push(newPost);
+            renderPosts();
+
+            // Clear the form
+            document.getElementById('postContent').value = '';
+            document.getElementById('postImage').value = '';
+        });
+
+        // Handle like, comment, delete post, and delete comment actions
+        document.getElementById('postsContainer').addEventListener('click', (event) => {
+            if (event.target.classList.contains('like-btn')) {
+                const postIndex = event.target.dataset.post;
+                posts[postIndex].likes++;
+                renderPosts();
+            }
+
+            if (event.target.classList.contains('comment-btn')) {
+                const postIndex = event.target.dataset.post;
+                const commentInput = document.querySelector(`.comment-input[data-post="${postIndex}"]`);
+                const comment = commentInput.value;
+                if (comment) {
+                    posts[postIndex].comments.push(comment);
+                    renderPosts();
+                    commentInput.value = ''; // Clear input field
+                }
+            }
+
+            if (event.target.classList.contains('delete-post-btn')) {
+                const postIndex = event.target.dataset.post;
+                posts.splice(postIndex, 1); // Remove the post
+                renderPosts();
+            }
+
+            if (event.target.classList.contains('delete-comment-btn')) {
+                const postIndex = event.target.dataset.post;
+                const commentIndex = event.target.dataset.comment;
+                posts[postIndex].comments.splice(commentIndex, 1); // Remove the comment
+                renderPosts();
+            }
+        });
+
+        // Initial rendering of posts
+        renderPosts();
+    </script>
+
+</body>
+</html>

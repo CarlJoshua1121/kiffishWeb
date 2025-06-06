@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="image/showa.jpg" type="image/png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.75, maximum-scale=0.75, user-scalable=no">
+  <title>Checkout - Kiffish</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="cart.css" />
+  <style>
+ 
+  .checkout-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .checkout-form {
+    background: #f0f8ff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center contents horizontally */
+  }
+
+  .checkout-form h3 {
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .form-field-group {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .checkout-form label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+
+  .checkout-form input,
+  .checkout-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .checkout-form textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .checkout-form .btn {
+    margin-top: 20px;
+    background: #0099cc;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+  }
+
+  .checkout-form .btn:hover {
+    background: #0077aa;
+  }
+
+  .cart-summary {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 30px;
+    background: #e8f4fc;
+    padding: 15px;
+    border-radius: 8px;
+  }
+</style>
+
+</style>
+
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="image/logo.png" alt="Kiffish Logo">
+    </div>
+    <nav class="menu">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="Livefish.html">Live Fish</a></li>
+        <li><a href="FishAcc.html">Fish Accessories</a></li>
+        <li><a href="Community.html">Community</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="cart.html"><img src="image/cart.png" alt="Cart"></a>
+      <a href="#"><img src="image/u2.png" alt="User"></a>
+    </div>
+  </header>
+
+  <div class="checkout-container">
+    <h1>Checkout</h1>
+
+    <form class="checkout-form" id="checkout-form">
+  <div class="form-field-group">
+    <h3>Your Info</h3>
+
+    <label><i class="fas fa-user"></i> Full Name</label>
+    <input type="text" id="user-name" name="name" required>
+
+    <label><i class="fas fa-phone"></i> Phone</label>
+    <input type="tel" id="user-phone" name="phone" required>
+
+    <label><i class="fas fa-envelope"></i> Email</label>
+    <input type="email" id="user-email" name="email" required>
+
+    <h3>Delivery Address</h3>
+
+    <label><i class="fas fa-map-marker-alt"></i> Address</label>
+    <textarea id="user-address" name="address" rows="3" required></textarea>
+  </div>
+
+  <div class="cart-summary">
+    <h3>Your Order</h3>
+    <ul id="order-items"></ul>
+    <p><strong>Total: <span id="grand-total">₱0</span></strong></p>
+  </div>
+
+  <button type="submit" class="btn">Place Order</button>
+</form>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Pre-fill user data if available
+      /*
+      const userInfo = JSON.parse(localStorage.getItem('userInfo')) || {};
+      document.getElementById("user-name").value = userInfo.name || "";
+      document.getElementById("user-phone").value = userInfo.phone || "";
+      document.getElementById("user-email").value = userInfo.email || "";
+      document.getElementById("user-address").value = userInfo.address || "";
+        */
+      // Load cart
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const orderList = document.getElementById("order-items");
+      const totalDisplay = document.getElementById("grand-total");
+      let grandTotal = 0;
+
+      cart.forEach(item => {
+        const subTotal = item.price * item.quantity;
+        grandTotal += subTotal;
+
+        const li = document.createElement("li");
+        li.textContent = `${item.name} (x${item.quantity}) - ₱${subTotal}`;
+        orderList.appendChild(li);
+      });
+
+      totalDisplay.textContent = `₱${grandTotal}`;
+    });
+
+    document.getElementById("checkout-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("user-name").value;
+      const phone = document.getElementById("user-phone").value;
+      const email = document.getElementById("user-email").value;
+      const address = document.getElementById("user-address").value;
+
+      const userInfo = { name, phone, email, address };
+      localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+      alert("Order placed successfully!");
+
+      localStorage.removeItem("cart");
+      window.location.href = "home.html"; // Or show thank you page
+    });
+  </script>
+
+</body>
+</html>

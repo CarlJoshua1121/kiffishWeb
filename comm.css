@@ -1,0 +1,574 @@
+/* Additional styles specific to community page */
+:root {
+   --yellow:rgb(68, 102, 238);
+   --red:#4d3ce7;
+   --white:#fff;
+   --black:#222;
+   --light-color:#777;
+   --border:.2rem solid var(--black);
+}
+body {
+   margin: 0;
+   font-family: Arial, sans-serif;
+   background-color: #f4f4f4;
+   background-size: 100 100%; 
+   background-repeat: no-repeat; 
+   padding-top: 100px; /* Same as home page for header spacing */
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+html {
+   font-size: 62.5%;
+   overflow-x: hidden;
+   scroll-behavior: smooth;
+   scroll-padding-top: 8rem;
+}
+
+body::after {
+   content: "";
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-image: url('image/koi.jpg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   opacity: 0.1;
+   z-index: -1;
+   background-attachment: fixed;
+}
+
+header {
+   position: fixed; 
+   top: 0; 
+   left: 0; 
+   width: 100%; 
+   background-color: #003759;
+   padding: 20px 30px;  
+   color: rgb(255, 255, 255);
+   display: flex;
+   align-items: center;
+   z-index: 1000; 
+   height: 100px;
+}
+
+.logo {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #003759;
+    padding: 5px;
+}
+
+.logo img {
+   width: 270px;
+   height: auto;
+}
+
+.menu {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-25%, -50%);
+}
+
+.menu ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: flex; 
+   gap: 5rem;
+}
+
+.menu ul li a {
+   font-size: 3rem;
+   font-weight: bold;
+   color: white;
+   text-decoration: none;
+   transition: color 0.3s;
+}
+
+.menu ul li a:hover {
+   color: black; 
+}
+
+.icons {
+   position: absolute;
+   right: 100px;
+   top: 50%;
+   transform: translateY(-50%);
+   display: flex;
+   gap: 30px;
+}
+
+.icons img {
+   width: 25px;
+   height: auto;
+   cursor: pointer;
+}
+
+.icons a img {
+   width: 25px;
+   height: auto;
+   cursor: pointer;
+   transition: filter 0.3s ease;
+}
+
+.icons a:hover img {
+   filter: invert(1);
+}
+
+.search-container {
+   position: relative;
+   display: inline-block;
+}
+
+.search-dropdown {
+   position: absolute;
+   top: 100%;
+   right: 0;
+   width: 300px;
+   background: white;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+   padding: 15px;
+   display: none;
+   z-index: 1000;
+}
+
+.search-dropdown.active {
+   display: block;
+   animation: fadeIn 0.2s ease-in-out;
+}
+
+.search-dropdown .search-form {
+   display: flex;
+   align-items: center;
+}
+
+.search-dropdown .box {
+   flex: 1;
+   padding: 10px;
+   border: 1px solid #ddd;
+   border-radius: 4px;
+   font-size: 1.4rem;
+}
+
+.search-dropdown .fa-search {
+   width: 40px;
+   height: 40px;
+   background: var(--yellow);
+   color: var(--black);
+   border: none;
+   border-radius: 4px;
+   margin-left: 5px;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.search-dropdown .fa-search:hover {
+   background: var(--black);
+   color: white;
+}
+
+/* Login Popup Styles */
+.login-popup {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.7);
+   justify-content: center;
+   align-items: center;
+   z-index: 1000;
+}
+
+.login-form {
+   background-color: rgba(2, 112, 255, 0.298);
+   padding: 30px;
+   border-radius: 10px;
+   width: 350px;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+   position: relative;
+   padding: 5rem 10rem;
+   backdrop-filter: blur(5px);
+   border: #ffffff 3px solid;
+}
+
+
+.login-form h2 {
+   text-align: center;
+   margin-bottom: 100px;
+   color: #ffffff;
+   font-size: 5rem;
+}
+
+.form-group {
+   margin-bottom: 15px;
+}
+
+.form-group label {
+   display: block;
+   margin-bottom: 5px;
+   color: #ffffff;
+   font-size: 1.5rem;
+}
+
+.form-group input {
+   width: 100%;
+   padding: 10px;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   font-size: 16px;
+}
+
+.form-options {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 15px;
+   font-size: 14px;
+   color: #ffffff;
+}
+
+.form-options a {
+   color: #0066cc;
+   text-decoration: none;
+}
+
+.login-btn {
+   width: 100%;
+   padding: 12px;
+   background-color: #09004e;
+   color: #ffffff;
+   border: rgb(255, 255, 255) 1px solid;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+   font-weight: bold;
+   transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+   background-color: #13076b;
+}
+
+.register-link {
+   text-align: center;
+   margin-top: 15px;
+   font-size: 14px;
+   color: #ffffff;
+}
+
+.register-link a {
+   color: #0066cc;
+   text-decoration: none;
+}
+
+.close-btn {
+   position: absolute;
+   top: 15px;
+   right: 20px;
+   font-size: 3rem;
+   cursor: pointer;
+   color: #ffffff;
+   
+}
+
+.close-btn:hover {
+   color: #000000;
+}
+
+.register-popup {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.7);
+   display: none;
+   justify-content: center;
+   align-items: center;
+   z-index: 1000;
+}
+
+.register-form {
+   background-color: rgba(2, 120, 255, 0.187);
+   padding: 30px;
+   border-radius: 10px;
+   width: 350px;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+   position: relative;
+   padding: 5rem 10rem;
+   backdrop-filter: blur(15px);
+   border: #ffffff 3px solid;
+}
+
+.register-form h2 {
+   text-align: center;
+   margin-bottom: 20px;
+   color: #ffffff;
+   font-size: 2.5rem;
+}
+
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #09004e;
+    color: white;
+    border: rgb(255, 255, 255) 1px solid;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.register-btn:hover {
+    background-color: #13076b;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+/* Add these to your existing CSS */
+.login-popup, .register-popup {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    display: flex !important; /* Remove the inline display:none */
+}
+
+.login-popup.active, .register-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.login-form, .register-form {
+    transform: translateY(-20px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.login-popup.active .login-form,
+.register-popup.active .register-form {
+    transform: translateY(0);
+}
+
+/* Footer Styles */
+.footer-wrapper {
+   position: relative;
+   width: 100%;
+   height: auto;
+   overflow: hidden;
+}
+
+.footer-bg {
+   width: 100%;
+   display: block;
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   z-index: -1;
+}
+
+.footer-text {
+   position: relative;
+   width: 100%;
+   height: auto;
+   color: white;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-end;
+   text-align: center;
+   font-size: 1.6rem;
+   padding: 20px 0;
+}
+
+.footer-text a {
+   color: white;
+   text-decoration: none;
+   margin: 10px;
+}
+
+.footer-text a:hover {
+   color: #ffd700;
+}
+
+.social-media-icons img {
+   width: 30px;
+   margin: 10px 5px;
+}
+/* Enhanced Post Form Styles */
+.post-form {
+   background: white;
+   border-radius: 12px;
+   padding: 25px;
+   margin-bottom: 30px;
+   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+   border: 1px solid #e0e0e0;
+}
+
+.post-form h3 {
+   font-size: 2.2rem;
+   margin-bottom: 20px;
+   color: #003759;
+}
+
+.post-form textarea {
+   width: 97%;
+   border: 2px solid #e0e0e0;
+   border-radius: 8px;
+   padding: 20px;
+   resize: vertical;
+   min-height: 120px;
+   margin-bottom: 20px;
+   font-size: 1.6rem;
+   transition: border-color 0.3s;
+}
+
+.post-form textarea:focus {
+   border-color: #003759;
+   outline: none;
+}
+
+.post-form button {
+   background-color: #003759;
+   color: white;
+   border: none;
+   padding: 12px 25px;
+   border-radius: 8px;
+   cursor: pointer;
+   font-size: 1.6rem;
+   font-weight: bold;
+   transition: background-color 0.3s;
+}
+
+.post-form button:hover {
+   background-color: #002640;
+}
+
+/* Enhanced Post Styles */
+.post {
+   background: white;
+   border-radius: 12px;
+   padding: 25px;
+   margin-bottom: 30px;
+   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+   border: 1px solid #e0e0e0;
+}
+
+.post-header {
+   display: flex;
+   align-items: center;
+   margin-bottom: 20px;
+}
+
+.post-avatar {
+   width: 60px;
+   height: 60px;
+   border-radius: 50%;
+   margin-right: 15px;
+   background-color: #003759;
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-weight: bold;
+   font-size: 1.8rem;
+}
+
+.post-user {
+   font-weight: bold;
+   font-size: 1.8rem;
+}
+
+.post-time {
+   color: #777;
+   font-size: 1.4rem;
+   margin-left: 10px;
+}
+
+.post-content {
+   margin-bottom: 25px;
+   font-size: 1.8rem;
+   line-height: 1.6;
+}
+
+.post-image {
+   max-width: 100%;
+   border-radius: 8px;
+   margin-bottom: 20px;
+   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.post-actions {
+   display: flex;
+   border-top: 1px solid #eee;
+   padding-top: 15px;
+}
+
+.action-btn {
+   display: flex;
+   align-items: center;
+   margin-right: 25px;
+   cursor: pointer;
+   font-size: 1.6rem;
+   transition: color 0.3s;
+}
+
+.action-btn i {
+   margin-right: 8px;
+   font-size: 1.8rem;
+}
+
+/* File Input Styling */
+.post-form input[type="file"] {
+   width: 100%;
+   margin-bottom: 20px;
+   font-size: 1.6rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+   .post-form,
+   .post {
+         padding: 20px;
+   }
+   
+   .post-avatar {
+         width: 50px;
+         height: 50px;
+         font-size: 1.6rem;
+   }
+   
+   .post-user,
+   .post-content {
+         font-size: 1.6rem;
+   }
+}
+
+.liked {
+   color: #ff0000;
+}

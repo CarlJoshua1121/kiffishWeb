@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="icon" href="image/showa.jpg" type="image/png">
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Kiffish</title>
+   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="home.css">
+   <script src="script.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="image/logo.png" alt="Kiffish Logo">
+    </div>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="home.html" style="color: #ffd700;">Home</a></li>
+            <li><a href="LiveFish.html">Live Fish</a></li>
+            <li><a href="FishAcc.html">Fish Accessories</a></li>
+            <li><a href="Community.html">Community</a></li>
+        </ul>
+    </nav>
+    <div class="icons">
+        <a href="cart.html"><img src="image/c2.png" alt="Cart"></a>
+        <a href="#" id="user-btn"><img src="image/u2.png" alt="User"></a>
+    </div>
+
+
+</header>
+
+<!-- Login Popup Form -->
+<div class="login-popup" id="login-popup">
+    <div class="login-form">
+        <span class="close-btn">&times;</span>
+        <h2>Login</h2>
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-options">
+                <label><input type="checkbox" name="remember"> Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+            <div class="register-link">
+                Don't have an account? <a href="#" id="show-register">Register here</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Registration Popup Form -->
+<div class="register-popup" id="register-popup">
+    <div class="register-form">
+        <span class="close-btn">&times;</span>
+        <h2>Create Account</h2>
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="reg-username">Username</label>
+                <input type="text" id="reg-username" name="username" placeholder="Choose a username" required>
+            </div>
+            <div class="form-group">
+                <label for="reg-email">Email</label>
+                <input type="email" id="reg-email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" name="password" placeholder="Create a password" required>
+            </div>
+            <div class="form-group">
+                <label for="reg-confirm-password">Confirm Password</label>
+                <input type="password" id="reg-confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="register-btn">Register</button>
+            <div class="login-link">
+                Already have an account? <a href="#" id="show-login">Login here</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<section class="blue-bar">
+    <div class="blue-bar-content">
+        <div class="brand-table">
+            <div class="icon2">
+                <img src="image/logo.png" alt="Kiffish Logo">
+            </div>
+            <div class="brand-logo-wrapper">
+                <div class="logo-row">
+                    <div class="brand-cell"><img src="image/1.png" alt="Brand 1">FishPond</div>
+                    <div class="brand-cell"><img src="image/2.png" alt="Brand 2">OceanFish</div>
+                    <div class="brand-cell"><img src="image/3.png" alt="Brand 3">FishStore</div>
+                    <div class="brand-cell"><img src="image/4.png" alt="Brand 4">Creative Fish</div>
+                </div>
+                <div class="logo-row">
+                    <div class="spacer"></div>
+                    <div class="brand-cell"><img src="image/5.png" alt="Brand 5">Fish Media</div>
+                    <div class="brand-cell"><img src="image/6.png" alt="Brand 6">Duo Fish</div>
+                    <div class="brand-cell"><img src="image/7.png" alt="Brand 7">Blue Fish</div>
+                    <div class="spacer"></div>
+                </div>
+                <div class="logo-row">
+                    <div class="brand-cell"><img src="image/8.png" alt="Brand 8">FishLeaf</div>
+                    <div class="brand-cell"><img src="image/9.png" alt="Brand 9">FreshFish</div>
+                    <div class="brand-cell"><img src="image/10.png" alt="Brand 10">Fisheries</div>
+                    <div class="brand-cell"><img src="image/11.png" alt="Brand 11">FeedFish</div>
+                </div>         
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="home" class="home">
+    <div class="swiper home-slider">
+       <div class="swiper-wrapper">
+          <div class="swiper-slide slide">
+             <div class="content">
+                <h1>About Kiffish</h1>
+                <p>Kiffish is a dynamic and user-friendly web application designed to bring together 
+                    the growing community of fish enthusiasts in one convenient online platform. It 
+                    offers a diverse selection of stores that sell various types of fish, as well as a wide array 
+                    of aquarium tools and accessories to support fishkeeping. What sets Kiffish apart is its built-
+                    in community feature, where users can freely ask questions, share their experiences, and engage in discussions about fish 
+                    care, tank maintenance, and more. This interactive space encourages knowledge-sharing and helps foster 
+                    a supportive environment for fish lovers. Whether you're looking to start your own aquarium or 
+                    expand your current setup, Kiffish makes it easier to access trusted sellers, discover quality products, 
+                    and connect with people who share the same passion for aquatic life.</p>
+                <a href="LiveFish.html" class="btn">Buy Fish Now!</a>
+             </div>
+             <div class="video">
+                <video width="100%" autoplay muted loop>
+                    <source src="vid/betta.mp4" type="video/mp4">       
+                </video>
+            </div>
+          </div>
+          <div class="swiper-slide slide">
+             <div class="content">
+                <h1>Fish Accessories</h1>
+                <p>Aquarium accessories play a vital role in creating a safe, comfortable, and enriching environment for 
+                    pet fish. More than just decorations, these items such as artificial plants, rocks, caves, and gravel 
+                    help mimic the fish's natural habitat, providing spaces for hiding, resting, and exploring. This helps 
+                    reduce stress and encourages natural behavior, which is important for both the physical and mental 
+                    health of fish. Accessories also support breeding, protect smaller or shy species, and add beauty 
+                    to the tank, making it more enjoyable for both the fish and the owner. Whether you're a beginner or 
+                    a long-time aquarist, choosing the right accessories is essential to maintaining a healthy aquarium 
+                    and ensuring your fish thrive in their home.</p>
+                <a href="FishAcc.html" class="btn">Get Now!</a>
+             </div>
+             <div class="video">
+                <video width="100%" autoplay muted loop>
+                    <source src="vid/acc.mp4" type="video/mp4">       
+                </video>
+            </div>
+          </div>
+       </div>
+       <div class="swiper-pagination"></div>
+    </div>
+ </section>
+
+<div class="footer-wrapper">
+    <img src="image/blue.png" alt="Wave" class="footer-bg">
+    <div class="footer-text">
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a><br>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="social-media-icons">
+            <a href="#"><img src="image/fb.png" alt="Facebook"></a>
+            <a href="#"><img src="image/ig.png" alt="Instagram"></a>
+            <a href="#"><img src="image/tw.png" alt="Twitter"></a>
+        </div>
+        <p>&copy; 2025 Kiffish. All rights reserved.</p>
+    </div>
+</div>
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script>
+   var swiper = new Swiper(".home-slider", {
+      loop: true,
+      grabCursor: true,
+      effect: "flip",
+      pagination: {
+         el: ".swiper-pagination",
+         clickable: true,
+      },
+   });
+</script>
+
+</body>
+</html>
